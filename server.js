@@ -5,6 +5,7 @@ import mongoose from "mongoose"
 import connectDB from "./config/dbconfig.js"
 import categoryImportRouter from "./routes/categoryImport.router.js"
 import categoryRouter from "./routes/category.router.js"
+import singleHotelRouter from "./routes/singleHotel.router.js"
 
 const app = express()
 
@@ -19,6 +20,7 @@ app.use("/api/hoteldata", hotelImportRouter)
 app.use("/api/categorydata", categoryImportRouter)
 app.use("/api/hotels", hotelRouter)
 app.use("/api/categories", categoryRouter)
+app.use("/api/hotels", singleHotelRouter)
 
 connectDB()
 .then(()=>{
