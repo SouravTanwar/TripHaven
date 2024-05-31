@@ -4,9 +4,9 @@ import hotels from "../data/hotel.js"
 
 
 
-const router = Router()
+const hotelImportRouter = Router()
 
-router.route("/").post(async (req,res)=>{
+hotelImportRouter.route("/").post(async (req,res)=>{
     try {
         await Hotel.deleteMany();                                   // Hotel.remove() has been decrepiated
         const hotelsDB = await Hotel.insertMany(hotels.data)
@@ -17,4 +17,4 @@ router.route("/").post(async (req,res)=>{
     }
 })
 
-export default router
+export default hotelImportRouter

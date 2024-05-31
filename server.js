@@ -1,25 +1,24 @@
 import express from "express"
 import hotelRouter from "./routes/hotel.router.js"
-import router from "./routes/dataImport.router.js"
+import hotelImportRouter from "./routes/dataImport.router.js"
 import mongoose from "mongoose"
 import connectDB from "./config/dbconfig.js"
+import categoryImportRouter from "./routes/categoryImport.router.js"
+import categoryRouter from "./routes/category.router.js"
 
 const app = express()
 
 app.use(express.json()) // alternate for body parser
 
 
-
-
-
-
-
 app.get("/", (req,res)=>{
     res.send("hello testing")
 })
 
-app.use("/api/hoteldata", router)
+app.use("/api/hoteldata", hotelImportRouter)
+app.use("/api/categorydata", categoryImportRouter)
 app.use("/api/hotels", hotelRouter)
+app.use("/api/categories", categoryRouter)
 
 connectDB()
 .then(()=>{
