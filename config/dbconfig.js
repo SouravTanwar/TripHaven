@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
-import dotenv from "dotenv";
 
-dotenv.config();                 // path not set .env
+
+
 
 const connectDB = async () => {
     try {

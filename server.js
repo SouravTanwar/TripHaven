@@ -1,4 +1,5 @@
 import express from "express"
+import dotenv from "dotenv";
 import hotelRouter from "./routes/hotel.router.js"
 import hotelImportRouter from "./routes/dataImport.router.js"
 import mongoose from "mongoose"
@@ -6,6 +7,12 @@ import connectDB from "./config/dbconfig.js"
 import categoryImportRouter from "./routes/categoryImport.router.js"
 import categoryRouter from "./routes/category.router.js"
 import singleHotelRouter from "./routes/singleHotel.router.js"
+import authRouter from "./routes/auth.router.js"
+import wishlistRouter from "./routes/wishlist.router.js";
+
+
+
+dotenv.config();                 // path not set .env
 
 const app = express()
 
@@ -18,9 +25,12 @@ app.get("/", (req,res)=>{
 
 app.use("/api/hoteldata", hotelImportRouter)
 app.use("/api/categorydata", categoryImportRouter)
-app.use("/api/hotels", hotelRouter)
 app.use("/api/categories", categoryRouter)
+app.use("/api/hotels", hotelRouter)
 app.use("/api/hotels", singleHotelRouter)
+app.use("/api/auth", authRouter)
+app.use("/api/wishlist", wishlistRouter)
+
 
 connectDB()
 .then(()=>{
