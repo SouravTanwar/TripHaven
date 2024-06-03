@@ -9,12 +9,15 @@ import categoryRouter from "./routes/category.router.js"
 import singleHotelRouter from "./routes/singleHotel.router.js"
 import authRouter from "./routes/auth.router.js"
 import wishlistRouter from "./routes/wishlist.router.js";
+import cors from "cors"
 
 
 
 dotenv.config();                 // path not set .env
 
 const app = express()
+
+app.use(cors())
 
 app.use(express.json()) // alternate for body parser
 
